@@ -2,10 +2,11 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const app = express();
+const submitRouter = require('./submit');
 app.use(cors()); 
 app.use(express.json()); 
 app.use('/api/talent', submitRouter);
-const submitRouter = require('./submit');
+
 
 
 app.get('/', (req, res) => {
