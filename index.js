@@ -62,16 +62,19 @@ app.get('/', (req, res) => {
 });
 
 
-//connect to MongoDB
-mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log('Connected to MongoDB via Render!'))
-  .catch((err) => console.error(err));
-    process.exit(1); //Exit if the database connection fails
+// Replace your old mongoose.connect line with this:
+const mongoURI = process.env.MONGO_URI || "mongodb+srv://larah_dejan:La%40NdZ4Et_iPqHp@expressnodedb.i6iqx0g.mongodb.net/";
 
-// start the server
+mongoose
+  .connect(mongoURI)
+  .then(() => console.log('Connected to MongoDB Successfully'))
+  .catch((error) => {
+    console.error('MongoDB connection error:', error.message);
+    // Don't use process.exit(1) on Render, let the app stay alive to retry
+  });
 
+// IMPORTANT: Use the port Render gives you
 const PORT = process.env.PORT || 5000;
-
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
