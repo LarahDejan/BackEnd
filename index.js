@@ -2,9 +2,11 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const app = express();
+app.use(cors()); 
+app.use(express.json()); 
+app.use('/api/talent', submitRouter);
 const submitRouter = require('./submit');
 
-app.use('/api/talent', submitRouter);
 
 app.get('/', (req, res) => {
     res.send(`<!DOCTYPE html>
