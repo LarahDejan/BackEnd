@@ -1,3 +1,5 @@
+require('dns').setServers(['8.8.8.8', '8.8.4.4']);
+
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -67,6 +69,17 @@ app.get('/', (req, res) => {
 </html>`);
 });
 
+
+//middleware
+app.use(cors());
+app.use(express.json());
+
+
+//import API folder
+const submitTalentForm= require('./API/submit');
+
+//Use API
+app.use('/api/submit', submitTalentForm);
 
 // Replace your old mongoose.connect line with this:
 const mongoURI = process.env.MONGO_URI || "mongodb+srv://larah_dejan:La%40NdZ4Et_iPqHp@expressnodedb.i6iqx0g.mongodb.net/";
