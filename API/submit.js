@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const Form = require("../models/Form"); 
+const Form = require("../MODELS/talentform"); 
 
 // POST route to handle form submissions
 router.post("/", async (req, res) => {
