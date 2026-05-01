@@ -81,7 +81,7 @@ app.use(express.json());
 const submitTalentForm= require('./API/submit');
 
 //Use API
-app.use('/api/submit', submitTalentForm);
+app.use('/API/submit', submitTalentForm);
 
 // Replace your old mongoose.connect line with this:
 const mongoURI = process.env.MONGO_URI || "mongodb+srv://larah_dejan:La%40NdZ4Et_iPqHp@expressnodedb.i6iqx0g.mongodb.net/";
