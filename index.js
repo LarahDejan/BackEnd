@@ -5,6 +5,8 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const app = express();
 const submitRouter = require('./API/submit');
+const http = require('http');
+const server = http.createServer(app);
 app.use(cors()); 
 app.use(express.json()); 
 app.use('/api/talent', submitRouter);
